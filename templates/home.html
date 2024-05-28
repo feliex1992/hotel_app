@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Management System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <header>
+    <h1>Hotel Management System</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('book') }}">Book a Room</a>
+      <a href="{{ url_for('view_bookings') }}">View Bookings</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Available Rooms</h2>
+    <div class="room-list">
+      {% for room in rooms %}
+      <div class="room-card">
+        <h3>Room {{ room.room_number }}</h3>
+        <p>Type: {{ room.room_type }}</p>
+        <p>Status: {% if room.is_booked %}Booked{% else %}Available{% endif %}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Hotel Management System</p>
+  </footer>
+</body>
+
+</html>
